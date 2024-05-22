@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+  .welcome-section {
+    background-image:url('https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');background-repeat: no-repeat; background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .welcome-section h3 {
+    margin-top: 50px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .welcome-section .btn-container {
+    margin-top: 20px;
+  }
+
+  .welcome-section .btn {
+    margin: 0 10px;
+  }
+</style>
+
+<div class="welcome-section">
+  <h3 style="color:white;">WELCOME {{ username|upper }}</h3>
+  {% if user.is_superuser %}
+  <div class="btn-container">
+    <a href="{% url 'adminpanel' %}" class="btn btn-outline-success"><button type="button" class="btn btn-success">Admin</button></a>
+  </div>
+  {% endif %}
+  <div class="btn-container">
+    <a href="{% url 'logout' %}" class="btn btn-outline-success"><button type="button" class="btn btn-danger">Log out</button></a>
+  </div>
+</div>
+{% endblock %}
